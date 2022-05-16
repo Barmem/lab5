@@ -13,7 +13,7 @@ namespace Move
         }
         public void Execute()
         {
-            
+            velocity.Velocity = initialVelocity;
         }
     }
 }
