@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tank", "Tank\Tank.csproj", "{4ADB8971-0FD6-4A69-84AF-6D2FCFF8AC81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Move", "Move\Move.csproj", "{C4BA5BC9-9ADA-4A8E-8506-00D58A941146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tank.Tests", "Tank.Tests\Tank.Tests.csproj", "{AE278B16-519B-42D3-A895-2D81A80069D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Move.Tests", "Move.Tests\Move.Tests.csproj", "{E031E844-AD8A-41D1-91E4-2DBC39D0EEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,13 @@ Global
 		{AE278B16-519B-42D3-A895-2D81A80069D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE278B16-519B-42D3-A895-2D81A80069D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE278B16-519B-42D3-A895-2D81A80069D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4BA5BC9-9ADA-4A8E-8506-00D58A941146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4BA5BC9-9ADA-4A8E-8506-00D58A941146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4BA5BC9-9ADA-4A8E-8506-00D58A941146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4BA5BC9-9ADA-4A8E-8506-00D58A941146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E031E844-AD8A-41D1-91E4-2DBC39D0EEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E031E844-AD8A-41D1-91E4-2DBC39D0EEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E031E844-AD8A-41D1-91E4-2DBC39D0EEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E031E844-AD8A-41D1-91E4-2DBC39D0EEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
