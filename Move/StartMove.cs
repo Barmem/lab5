@@ -15,6 +15,8 @@ namespace Move
         {
             var obj = IoC.resolve<MoveStartable>("Tank.GetByID", moveStartable.ID);
             IoC.resolve<Command>("Tank.ChangeVelocity", obj, moveStartable.initialVelocity);
+            var cmd = IoC.resolve<Command>("Tank.Movement", obj);
+            IoC.resolve<Queue>("Queue").Add(cmd);
         }
     }
 }
