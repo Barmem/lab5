@@ -22,4 +22,18 @@ namespace Move
             get;
         }
     }
+
+    public interface Movable
+    {
+        public Vector Position
+        {
+            set;
+            get;
+        }
+
+        public Vector Velocity
+        {
+            get;
+        }
+    }
 }
