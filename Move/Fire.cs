@@ -15,14 +15,14 @@ namespace Move
                                 obj, 
                                 fireable.InitialBulletPosition
                                 ).Execute();
-            IoC.Resolve<Command>("GameObject.SetInitialPosition", 
+            IoC.Resolve<Command>("GameObject.SetDirection", 
                                 obj, 
                                 fireable.InitialBulletDirection
                                 ).Execute(); 
-            IoC.Resolve<UObject>("Action", 
+            var action = IoC.Resolve<UObject>("Action", 
                                 obj, 
                                 "Move", 
-                                fireable.initialVelocity);
+                                fireable.InitialVelocity);
             IoC.Resolve<Command>("GameObject.StartMovement", action).Execute();
         }
     }

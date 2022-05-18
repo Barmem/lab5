@@ -45,7 +45,7 @@ namespace Move
         public int InitialBulletDirection{
             get;
         }
-        public Vector initialVelocity{
+        public Vector InitialVelocity{
             get;
         }
     }
