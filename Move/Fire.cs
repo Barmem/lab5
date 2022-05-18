@@ -11,7 +11,7 @@ namespace Move
 
         public void Execute(){
             var obj = IoC.Resolve<UObject>("GameObject.CreateBullet");
-            IoC.Resolve<Command>("GameObject.SetInitialPosition", 
+            IoC.Resolve<Command>("GameObject.SetPosition", 
                                 obj, 
                                 fireable.InitialBulletPosition
                                 ).Execute();

@@ -260,7 +260,7 @@ namespace Move.Tests
             return Dir.Object;
         }
 
-        else if (key == "GameObjects.CreateBullet")
+        else if (key == "GameObject.CreateBullet")
         {
 
             return GameObjects.Object;
