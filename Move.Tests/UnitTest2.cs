@@ -1,154 +1,154 @@
-using System;
-using Xunit;
-using Moq;
+// using System;
+// using Xunit;
+// using Moq;
 
-namespace Move.Tests;
+// namespace Move.Tests;
 
-public class UnitTest2
-{
+// public class UnitTest2
+// {
 
-    [Fact]
-    public void Vectors()
-        {
-        Vector v1 = new Vector(1, 2);
-        Vector v2 = new Vector(1, 2);
+//     [Fact]
+//     public void Vectors()
+//         {
+//         Vector v1 = new Vector(1, 2);
+//         Vector v2 = new Vector(1, 2);
 
-        var isEqual = v1.Equals(v2);
+//         var isEqual = v1.Equals(v2);
 
-        Assert.True(isEqual);
-        }
+//         Assert.True(isEqual);
+//         }
 
-    [Fact]
-    public void FireTest()
-    {
-        //Arrange
-        var m = new Mock<Fireable>();
+//     [Fact]
+//     public void FireTest()
+//     {
+//         //Arrange
+//         var m = new Mock<Fireable>();
     
-        var obj = m.Object;
+//         var obj = m.Object;
 
-        m.Setup(m => m.InitialBulletPosition).Returns(new Vector (10, 5)).Verifiable();
-        m.Setup(m => m.InitialBulletDirection).Returns(new Vector (5, 10)).Verifiable();
-        m.Setup(m => m.InitialVelocity).Returns(new Vector (10, 10)).Verifiable();
+//         m.Setup(m => m.InitialBulletPosition).Returns(new Vector (10, 5)).Verifiable();
+//         m.Setup(m => m.InitialBulletDirection).Returns(new Vector (5, 10)).Verifiable();
+//         m.Setup(m => m.InitialVelocity).Returns(new Vector (10, 10)).Verifiable();
 
 
-    Fire c = new Fire(obj);
+//     Fire c = new Fire(obj);
 
-    bool isAction = true;
+//     bool isAction = true;
 
-    bool ActionWasCalled = false;
+//     bool ActionWasCalled = false;
 
-    var Action = new Mock<UObject>(); 
+//     var Action = new Mock<UObject>(); 
 
-    bool isPos = true;
+//     bool isPos = true;
 
-    bool PosWasCalled = false;
+//     bool PosWasCalled = false;
 
-    var Pos = new Mock<Command>();
+//     var Pos = new Mock<Command>();
     
-    bool isDir = true;
+//     bool isDir = true;
 
-    bool DirWasCalled = false;
+//     bool DirWasCalled = false;
 
-    var Dir = new Mock<Command>();
+//     var Dir = new Mock<Command>();
 
-    bool isStartMovement = true;
+//     bool isStartMovement = true;
 
-    bool StartWasCalled = false;
+//     bool StartWasCalled = false;
 
-    var StartM = new Mock<Command>();
+//     var StartM = new Mock<Command>();
 
-    var GameObjects = new Mock<UObject>();
+//     var GameObjects = new Mock<UObject>();
 
-    Func<string, object[], object> strategy = (key, args) => {
+//     Func<string, object[], object> strategy = (key, args) => {
         
-        if (key == "GameObject.SetPosition")
-        {
-            PosWasCalled = true;
+//         if (key == "GameObject.SetPosition")
+//         {
+//             PosWasCalled = true;
 
-            if(args.Length != 2) 
-            isPos = false;
-            if(!(args[0] is UObject))
-            isPos = false;
-            if(!(args[1] is Vector))
-            isPos = false;
+//             if(args.Length != 2) 
+//             isPos = false;
+//             if(!(args[0] is UObject))
+//             isPos = false;
+//             if(!(args[1] is Vector))
+//             isPos = false;
             
-            return Pos.Object;
-        }
+//             return Pos.Object;
+//         }
 
-        else if (key == "GameObject.SetDirection")
-        {
+//         else if (key == "GameObject.SetDirection")
+//         {
             
-            DirWasCalled = true;
+//             DirWasCalled = true;
 
-            if(args.Length != 2) 
-            isDir = false;
-            if(!(args[0] is UObject))
-            isDir = false;
-            if(!(args[1] is Vector))
-            isDir = false;
+//             if(args.Length != 2) 
+//             isDir = false;
+//             if(!(args[0] is UObject))
+//             isDir = false;
+//             if(!(args[1] is Vector))
+//             isDir = false;
             
-            return Dir.Object;
-        }
+//             return Dir.Object;
+//         }
 
-        else if (key == "GameObjects.CreateBullet")
-        {
+//         else if (key == "GameObjects.CreateBullet")
+//         {
 
-            return GameObjects.Object;
+//             return GameObjects.Object;
             
-        }
+//         }
 
-        else if (key == "Action")
-        {
-            ActionWasCalled = true;
+//         else if (key == "Action")
+//         {
+//             ActionWasCalled = true;
 
-            if(args.Length != 3) 
-            isAction = false;
-            if(!(args[0] is UObject))
-            isAction = false;
-            if(!(args[1] is string)||(string)args[1] != "Move")
-            isAction = false;
-            if(!(args[2] is Vector))
-            isAction = false;
+//             if(args.Length != 3) 
+//             isAction = false;
+//             if(!(args[0] is UObject))
+//             isAction = false;
+//             if(!(args[1] is string)||(string)args[1] != "Move")
+//             isAction = false;
+//             if(!(args[2] is Vector))
+//             isAction = false;
             
-            return Action.Object;
+//             return Action.Object;
 
-        }
+//         }
 
-        else if (key =="GameObject.StartMovement")
-        {
+//         else if (key =="GameObject.StartMovement")
+//         {
 
-            StartWasCalled = true;
+//             StartWasCalled = true;
 
-            if(args.Length != 1) 
-            isStartMovement = false;
-            if(!(args[0] is UObject))
-            isStartMovement = false;
+//             if(args.Length != 1) 
+//             isStartMovement = false;
+//             if(!(args[0] is UObject))
+//             isStartMovement = false;
             
-            return StartM.Object;
+//             return StartM.Object;
             
-        }
+//         }
 
-        else if ("IoC.Setup" == key)
-        {
-            var newStrategy = (Func<string,object[],object>) args[0];
+//         else if ("IoC.Setup" == key)
+//         {
+//             var newStrategy = (Func<string,object[],object>) args[0];
 
-            return new IoC.IoCSetupCommand(newStrategy);
-        }
-        else
-        {
-            throw new Exception();
-        }
-    };
+//             return new IoC.IoCSetupCommand(newStrategy);
+//         }
+//         else
+//         {
+//             throw new Exception();
+//         }
+//     };
 
-    IoC.Resolve<Command>("IoC.Setup", strategy).Execute();
+//     IoC.Resolve<Command>("IoC.Setup", strategy).Execute();
 
-    c.Execute();
+//     c.Execute();
         
 
-    m.VerifyAll();
-    Assert.True(PosWasCalled && isPos);
-    Assert.True(DirWasCalled && isDir);
-    Assert.True(ActionWasCalled && isAction);
-    Assert.True(StartWasCalled && isStartMovement);
-    }
-}
+//     m.VerifyAll();
+//     Assert.True(PosWasCalled && isPos);
+//     Assert.True(DirWasCalled && isDir);
+//     Assert.True(ActionWasCalled && isAction);
+//     Assert.True(StartWasCalled && isStartMovement);
+//     }
+// }
