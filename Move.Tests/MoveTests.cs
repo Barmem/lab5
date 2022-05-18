@@ -111,7 +111,7 @@ namespace Move.Tests
 
             bool IsGetByIDOkay = true;
             bool IsVelocityRemoveOkay = true;
-            bool IsEmptyCommandSetOkay = true;
+            bool IsMoveSetOkay = true;
 
             var ID = new Mock<Command>();
             var Movement = new Mock<Command>();
@@ -148,21 +148,21 @@ namespace Move.Tests
                     return Movement.Object;
                 }
 
-                else if (key == "GameObject.EmptyCommand.Set")
+                else if (key == "GameObject.Move.Set")
                 {
                     if (args.Length != 2)
                     {
-                        IsEmptyCommandSetOkay = false;
+                        IsMoveSetOkay = false;
                     }
 
                     if (!(args[0] is StopMovable))
                     {
-                        IsEmptyCommandSetOkay = false;
+                        IsMoveSetOkay = false;
                     }
 
                     if (!(args[1] is EmptyCommand))
                     {
-                        IsEmptyCommandSetOkay = false;
+                        IsMoveSetOkay = false;
                     }
 
                     return new EmptyCommand();
@@ -175,8 +175,9 @@ namespace Move.Tests
 
             Assert.True(IsGetByIDOkay);
             Assert.True(IsVelocityRemoveOkay);
-            Assert.True(IsEmptyCommandSetOkay);
+            Assert.True(IsMoveSetOkay);
         }
+        
     [Fact]
     public void Vectors()
         {
