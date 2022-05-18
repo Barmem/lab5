@@ -152,3 +152,35 @@
 //     Assert.True(StartWasCalled && isStartMovement);
 //     }
 // }
+
+[Fact]
+
+public void TestStrategy()
+{
+    object obj = new object();
+
+    var strategy = IoC.Resolve<Func<string, object[], object>>("IoC.Strategy");
+    Func<string, object[], object> action = (key, args) =>
+    {
+        if ("BadKey" == key)
+        {
+            throw new Exception();
+        }
+        else if ("IoC.Strategy" == key || "IoC.Strategy" == key)
+        {
+            return strategy(key, args);
+        }
+        else
+        {
+            throw new ResolveDependencyException();
+        }
+    };
+
+    IoC.Resolve<Command>("IoC.Setup", action).Execute();
+
+    Assert.Throws<ResolveDependencyException>(() =>
+    {
+        IoC.Resolve<object>("badkey");
+    });
+
+}

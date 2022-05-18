@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Tank.Tests/Tank.Tests.csproj",
+                "${workspaceFolder}/Move.Tests/Move.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Tank.Tests/Tank.Tests.csproj",
+                "${workspaceFolder}/Move.Tests/Move.Tests.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Tank.Tests/Tank.Tests.csproj"
+                "${workspaceFolder}/Move.Tests/Move.Tests.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
