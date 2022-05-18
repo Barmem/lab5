@@ -109,9 +109,9 @@ namespace Move.Tests
         public void StopMove()
         {
 
-            bool GetByIDisOkay = true;
-            bool VelocityRemoveisOkay = true;
-            bool EmptyCommandSetisOkay = true;
+            bool IsGetByIDOkay = true;
+            bool IsVelocityRemoveOkay = true;
+            bool IsEmptyCommandSetOkay = true;
 
             var ID = new Mock<Command>();
             var Movement = new Mock<Command>();
@@ -122,12 +122,12 @@ namespace Move.Tests
                 {
                     if (args.Length != 1)
                     {
-                        GetByIDisOkay = false;
+                        IsGetByIDOkay = false;
                     }
 
                     if(!(args[0] is string))
                     {
-                        GetByIDisOkay = false;
+                        IsGetByIDOkay = false;
                     }
 
                     return ID.Object;
@@ -137,12 +137,12 @@ namespace Move.Tests
                 {
                     if (args.Length != 1)
                     {
-                        VelocityRemoveisOkay = false;
+                        IsVelocityRemoveOkay = false;
                     }
 
                     if (!(args[0] is StopMovable))
                     {
-                        VelocityRemoveisOkay = false;
+                        IsVelocityRemoveOkay = false;
                     }
 
                     return Movement.Object;
@@ -152,17 +152,17 @@ namespace Move.Tests
                 {
                     if (args.Length != 2)
                     {
-                        EmptyCommandSetisOkay = false;
+                        IsEmptyCommandSetOkay = false;
                     }
 
                     if (!(args[0] is StopMovable))
                     {
-                        EmptyCommandSetisOkay = false;
+                        IsEmptyCommandSetOkay = false;
                     }
 
                     if (!(args[1] is EmptyCommand))
                     {
-                        EmptyCommandSetisOkay = false;
+                        IsEmptyCommandSetOkay = false;
                     }
 
                     return new EmptyCommand();
@@ -173,9 +173,9 @@ namespace Move.Tests
                 }
             };
 
-            Assert.True(GetByIDisOkay);
-            Assert.True(VelocityRemoveisOkay);
-            Assert.True(EmptyCommandSetisOkay);
+            Assert.True(IsGetByIDOkay);
+            Assert.True(IsVelocityRemoveOkay);
+            Assert.True(IsEmptyCommandSetOkay);
         }
     [Fact]
     public void Vectors()
