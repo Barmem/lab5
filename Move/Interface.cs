@@ -36,7 +36,7 @@ namespace Move
             get;
         }
     }
-    interface Fireable
+    public interface Fireable
     {
 
         public Vector InitialBulletPosition{
