@@ -14,7 +14,7 @@ namespace Move
         public void Execute()
         {
             var obj = IoC.Resolve<MoveStartable>("GameObject.GetByID", moveStartable.ID);
-            IoC.Resolve<Command>("GameObject.ChangeVelocity", obj, moveStartable.initialVelocity);
+            IoC.Resolve<Command>("GameObject.ChangeVelocity", obj, moveStartable.InitialVelocity);
             var cmd = IoC.Resolve<Command>("GameObject.Movement", obj);
             IoC.Resolve<Queue>("Queue").Add(cmd);
         }

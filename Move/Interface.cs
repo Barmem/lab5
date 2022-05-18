@@ -8,7 +8,7 @@ namespace Move
         { 
             get; 
         }
-        int initialVelocity
+        int InitialVelocity
         {
             get;
         }
