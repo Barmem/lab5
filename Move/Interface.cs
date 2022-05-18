@@ -36,6 +36,15 @@ namespace Move
             get;
         }
     }
+
+    public interface StopMovable
+    {
+        string ID 
+        {
+            get;
+        }
+    }
+    
     public interface Fireable
     {
 
