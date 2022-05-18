@@ -5,7 +5,7 @@ namespace Move
     public class Fire : Command
     {
         Fireable fireable;
-        public FireCommand(Fireable fireable){
+        public Fire(Fireable fireable){
             this.fireable = fireable;
         }
 

@@ -3,13 +3,17 @@ using Xunit;
 using Moq;
 
 
-namespace Move.Tests;
-
+namespace Move.Tests
+{
 public class UnitTest1
 {
     [Fact]
     public void StartMove()
     {
+        bool IsChangeVelocityOkay = true;
+        bool IsMovementOkay = true;
+        bool IsGetByIDOkay = true;
+       
         var m = new Mock<MoveStartable>();
         var v = new Mock<VelocityChangeable>();
         var obj_move = m.Object;
@@ -20,42 +24,38 @@ public class UnitTest1
 
         StartMove c = new StartMove(obj_move);
 
-        bool isChangeVelocityOkay = true;
-        bool isMovementOkay = true;
-        bool isGetByIDOkay = true;
-
         Func<string, object[], object> strategy = (key, args) =>
         {
-            if (key == "Tank.ChangeVelocity")
+            if (key == "GameObject.ChangeVelocity")
             {
                 if(args.Length != 2)
                 {
-                    isChangeVelocityOkay = false;
+                    IsChangeVelocityOkay = false;
                 }
 
                 if(!(args[0] is MoveStartable))
                 {
-                    isChangeVelocityOkay = false;
+                    IsChangeVelocityOkay = false;
                 }
 
                 if(!(args[1] is string))
                 {
-                    isChangeVelocityOkay = false;
+                    IsChangeVelocityOkay = false;
                 }
 
                 return Velocity.Object;
             }
 
-            else if (key == "Tank.Movement")
+            else if (key == "GameObject.Movement")
             {
                 if (args.Length != 1)
                 {
-                    isMovementOkay = false;
+                    IsMovementOkay = false;
                 }
 
                 if (!(args[0] is MoveStartable))
                 {
-                    isMovementOkay = false;
+                    IsMovementOkay = false;
                 }
 
                 return Movement.Object;
@@ -67,16 +67,16 @@ public class UnitTest1
                 return Q.Object;
             }
 
-            else if (key == "Tank.GetByID")
+            else if (key == "GameObject.GetByID")
             {
                 if (args.Length != 1)
                 {
-                    isGetByIDOkay = false;
+                    IsGetByIDOkay = false;
                 }
 
                 if (!(args[0] is string))
                 {
-                    isGetByIDOkay = false;
+                    IsGetByIDOkay = false;
                 }
                     
                 return ID.Object;
@@ -88,8 +88,9 @@ public class UnitTest1
             }
         };
 
-        Assert.True(isChangeVelocityOkay);
-        Assert.True(isMovementOkay);
-        Assert.True(isGetByIDOkay);
+        Assert.True(IsChangeVelocityOkay);
+        Assert.True(IsMovementOkay);
+        Assert.True(IsGetByIDOkay);
     }
+}
 }
