@@ -112,11 +112,10 @@ namespace Move.Tests
             bool IsGetByIDOkay = true;
             bool IsVelocityRemoveOkay = true;
             bool IsMoveSetOkay = true;
-            bool IsEmptyCmdOkay = true;
 
             var ID = new Mock<Command>();
             var Movement = new Mock<Command>();
-            var EmptyCMD = new Mock<EmptyCommand>();
+            
 
             Func<string, object[], object> strategy = (key, args) =>
             {
@@ -179,8 +178,21 @@ namespace Move.Tests
             Assert.True(IsGetByIDOkay);
             Assert.True(IsVelocityRemoveOkay);
             Assert.True(IsMoveSetOkay);
-            Assert.True(IsEmptyCmdOkay);
         }
+
+    [Fact]
+
+    public void EmptOkay()
+    {
+        bool IsEmptyCmdOkay = true;
+        var EmptyCMD = new Mock<EmptyCommand>();
+        if (EmptyCMD == null)
+            {
+                IsEmptyCmdOkay = false;
+            }
+        Assert.True(IsEmptyCmdOkay);
+
+    }
 
     [Fact]
     public void Vectors()
@@ -326,12 +338,5 @@ namespace Move.Tests
     Assert.True(StartWasCalled && isStartMovement);
     IoC.Resolve<Command>("IoC.Setup", defStrat).Execute();
     }
-
-    
-    [Fact] 
-        public void TestIoCException() 
-            { 
-            Assert.Throws<Exception>(()=>IoC.Resolve<Object>("badkey")); 
-            }
-    }
+}
 }
