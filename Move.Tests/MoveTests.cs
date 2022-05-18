@@ -112,9 +112,11 @@ namespace Move.Tests
             bool IsGetByIDOkay = true;
             bool IsVelocityRemoveOkay = true;
             bool IsMoveSetOkay = true;
+            bool IsEmptyCmdOkay = true;
 
             var ID = new Mock<Command>();
             var Movement = new Mock<Command>();
+            var EmptyCMD = new Mock<EmptyCommand>();
 
             Func<string, object[], object> strategy = (key, args) =>
             {
@@ -167,6 +169,7 @@ namespace Move.Tests
 
                     return new EmptyCommand();
                 }
+                
                 else
                 {
                     throw new Exception();
@@ -176,8 +179,9 @@ namespace Move.Tests
             Assert.True(IsGetByIDOkay);
             Assert.True(IsVelocityRemoveOkay);
             Assert.True(IsMoveSetOkay);
+            Assert.True(IsEmptyCmdOkay);
         }
-        
+
     [Fact]
     public void Vectors()
         {
