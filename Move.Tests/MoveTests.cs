@@ -310,9 +310,8 @@ namespace Move.Tests
             throw new Exception();
         }
     };
-
+    var defStrat = IoC.Resolve<Func<string, object[], object>>("IoC.Strategy");
     IoC.Resolve<Command>("IoC.Setup", strategy).Execute();
-
     c.Execute();
         
 
@@ -321,8 +320,14 @@ namespace Move.Tests
     Assert.True(DirWasCalled && isDir);
     Assert.True(ActionWasCalled && isAction);
     Assert.True(StartWasCalled && isStartMovement);
+    IoC.Resolve<Command>("IoC.Setup", defStrat).Execute();
     }
-    }
-    
 
+    
+    [Fact] 
+        public void TestIoCException() 
+            { 
+            Assert.Throws<Exception>(()=>IoC.Resolve<Object>("badkey")); 
+            }
+    }
 }

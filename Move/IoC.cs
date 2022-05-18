@@ -34,9 +34,6 @@ namespace Move
             }
             else if ("IoC.Strategy" == key)
             {
-                if(strategy == null){
-                    throw new Exception();
-                }
                 return strategy;
             }
             else

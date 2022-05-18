@@ -16,7 +16,7 @@ namespace Move
         {
             var obj = IoC.Resolve<StopMovable>("GameObject.GetByID", endable.ID);
             IoC.Resolve<Command>("GameObject.Velocity.Remove", obj).Execute();
-            IoC.Resolve<Command>("GameObject.MoveCommand.Set", obj, new EmptyCommand()).Execute();
+            IoC.Resolve<Command>("GameObject.Move.Set", obj, new EmptyCommand()).Execute();
         }
     }
 }
