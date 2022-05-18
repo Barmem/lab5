@@ -6,7 +6,7 @@ namespace Move
 {
     public class IoC
     {
-        public static T resolve<T>(string key, params object[] args)
+        public static T Resolve<T>(string key, params object[] args)
         {
             return (T)strategy(key,args);
         }

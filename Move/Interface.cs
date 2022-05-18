@@ -36,4 +36,18 @@ namespace Move
             get;
         }
     }
+    interface Fireable
+    {
+
+        public Vector InitialBulletPosition{
+            get;
+        }
+        public int InitialBulletDirection{
+            get;
+        }
+        public Vector initialVelocity{
+            get;
+        }
+    }
+
 }
