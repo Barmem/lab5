@@ -1,0 +1,22 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+  - test
+
+build-job:
+  only:
+    - master
+    - merge_requests
+  stage: build
+  script:
+    dotnet build
+
+
+unit-test-job:
+  only:
+    - master
+    - merge_requests
+  stage: test
+  script:
+    dotnet test
