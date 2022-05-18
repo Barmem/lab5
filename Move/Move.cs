@@ -13,7 +13,7 @@ namespace Move
 
         public void Execute()
         {
-            
+            obj.Position+= obj.Velocity;
         }
     }
 }
