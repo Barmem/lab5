@@ -20,9 +20,9 @@ namespace Move
                                 fireable.InitialBulletDirection
                                 ).Execute(); 
             IoC.Resolve<UObject>("Action", 
-            obj, 
-            "Move", 
-            fireable.initialVelocity);
+                                obj, 
+                                "Move", 
+                                fireable.initialVelocity);
             IoC.Resolve<Command>("GameObject.StartMovement", action).Execute();
         }
     }
